@@ -35,20 +35,22 @@
         "account_cache_error": "游戏账号缓存信息错误",
         "session_key_error": "会话密钥错误。",
         "username_error": "用户名不存在。",
-        "username_create_error": "未找到此用户名, 创建失败。"
-      }
+        "username_create_error": "未找到此用户名, 创建失败。",
+	"server_max_player_limit": "当前服务器已满。"
+      },
+	"router_error": "[Dispatch] 连接路由失败."    
     },
     "status": {
       "free_software": "Grasscutter 是免费开源软件，遵循 AGPL-3.0 license。如果你是付费购买的，那你已经被骗了。项目地址：https://github.com/Grasscutters/Grasscutter",
       "starting": "正在启动 Grasscutter...",
       "shutdown": "正在关闭...",
-      "done": "加载完成！输入 \"help\" 查看命令列表",
+      "done": "加载完成！输入 \"help\" 查看命令帮助。",
       "error": "发生了一个错误。",
       "welcome": "欢迎使用 Grasscutter！珍惜这段美妙的旅途吧！",
       "run_mode_error": "无效的服务器运行模式：%s。",
-      "run_mode_help": "服务器运行模式必须为 HYBRID、DISPATCH_ONLY 或 GAME_ONLY。Grasscutter 启动失败...",
+      "run_mode_help": "服务器运行模式必须为 'HYBRID'(混合模式), 'DISPATCH_ONLY'(仅dispatch模式), 或 'GAME_ONLY'(仅游戏模式). 无法启动Grasscutter...",
       "create_resources": "正在创建 resources 目录...",
-      "resources_error": "请将 BinOutput 和 ExcelBinOutput 复制到 resources 目录。",
+      "resources_error": "请将服务端资源复制到 resources 目录。您可以在这里找到资源：https://github.com/Koko-boya/Grasscutter_Resources。",
       "version": "Grasscutter 版本: %s-%s"
     }
   },
@@ -156,7 +158,7 @@
       "description": "给予指定圣遗物"
     },
     "giveChar": {
-      "usage": "用法：givechar <玩家> <角色ID|角色名> [数量]",
+      "usage": "用法：givechar <玩家> <角色ID|角色名> [等级]",
       "given": "已将角色 %s [等级 %s] 给与 %s。",
       "invalid_avatar_id": "无效的角色ID。",
       "invalid_avatar_level": "无效的角色等级。",
@@ -179,10 +181,6 @@
     "heal": {
       "success": "已治疗所有角色。",
       "description": "治疗当前队伍的角色"
-    },
-    "join": {
-      "usage": "用法：join <角色IDs> 例如\"join 10000038 10000039\"空格分开",
-      "description": "强制将角色加入到当前队伍中"
     },
     "kick": {
       "player_kick_player": "玩家 [%s:%s] 已将 [%s:%s] 踢出。",
@@ -236,11 +234,6 @@
       "reload_done": "重载完成。",
       "description": "重载配置文件和数据"
     },
-    "remove": {
-      "usage": "用法: remove [角色序号] 从1开始",
-      "invalid_index": "角色序号必须从1开始",
-      "description": "强制移除队内角色"
-    },
     "resetConst": {
       "reset_all": "重置所有角色的命座。",
       "success": "已重置 %s 的命座，重新登录后生效。",
@@ -271,7 +264,7 @@
       "sender": "<发件人>",
       "arguments": "<物品ID|物品名称|finish> [数量] [等级]",
       "error": "错误：无效的撰写阶段 %s。需要 StackTrace 请查看服务器控制台。",
-      "description": "向指定用户发送邮件。此命令的用法可根据附加的参数而变化"
+      "description": "向指定用户发送邮件。此命令的语法会基于邮件的成分而改变。"
     },
     "sendMessage": {
       "usage": "用法：sendmessage <玩家> <消息>",
@@ -330,6 +323,24 @@
       "q_skill_id": "元素爆发(q技能)ID %s。",
       "description": "设置当前角色的天赋等级"
     },
+    "team": {
+      "usage": "用法：team <add|remove|set> [角色ID,...] [序号|first|last|序号-序号,...]",
+      "invalid_usage": "无效用法。",
+      "add_usage": "用法 (add)：team add <角色ID,...> [序号]",
+      "invalid_index": "无效序号。",
+      "add_too_much": "服务端当前配置仅允许你队伍里有至多 %d 名角色。您可以通过修改config中的MaxAvatarsInTeam项来突破此限制。",
+      "failed_to_add_avatar": "无法根据ID %s 添加角色。",
+      "remove_usage": "用法 (remove)：team remove <序号|first|last|序号a-序号b,...>",
+      "failed_to_parse_index": "无效序号：%s",
+      "remove_too_much": "你不能删除那么多角色，你的队伍列表将会变空。",
+      "ignore_index": "忽略的序号：%s",
+      "set_usage": "用法 (set)：team set <索引> <角色ID>",b
+      "index_out_of_range": "你指定的序号超出了范围。",
+      "failed_parse_avatar_id": "无效的角色ID：%s",
+      "avatar_already_in_team": "角色已经在你的队伍中了。",
+      "avatar_not_found": "无法找到该角色：%d",
+      "description": "手动修改你的队伍配置"
+    },    
     "teleportAll": {
       "success": "已将所有玩家传送到你的位置。",
       "error": "你只能在多人游戏状态下执行此命令。",
@@ -381,5 +392,34 @@
       "available_four_stars": "可获得的4星物品",
       "available_three_stars": "可获得的3星物品"
     }
-  }
+  },
+   "documentation": {
+    "handbook": {
+      "title": "GM Handbook",
+      "title_commands": "命令",
+      "title_avatars": "角色",
+      "title_items": "物品",
+      "title_scenes": "场景",
+      "title_monsters": "怪物",
+      "header_id": "ID",
+      "header_command": "命令",
+      "header_description": "说明",
+      "header_avatar": "角色",
+      "header_item": "物品",
+      "header_scene": "场景",
+      "header_monster": "怪物"
+    },
+    "index": {
+      "title": "文档",
+      "handbook": "GM Handbook",
+      "gacha_mapping": "祈愿物品映射JSON"
+    },
+    "quest": {
+      "usage": "quest <add|finish> [任务ID]",
+      "added": "已添加任务 %s。",
+      "finished": "已完成任务 %s。",
+      "not_found": "此任务不存在。",
+      "invalid_id": "无效的任务ID。",
+      "description": "添加或完成任务"
+    },
 }
