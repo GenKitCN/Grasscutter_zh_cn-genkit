@@ -334,7 +334,7 @@
       "failed_to_parse_index": "无效序号：%s",
       "remove_too_much": "你不能删除那么多角色，你的队伍列表将会变空。",
       "ignore_index": "忽略的序号：%s",
-      "set_usage": "用法 (set)：team set <索引> <角色ID>",b
+      "set_usage": "用法 (set)：team set <序号> <角色ID>",
       "index_out_of_range": "你指定的序号超出了范围。",
       "failed_parse_avatar_id": "无效的角色ID：%s",
       "avatar_already_in_team": "角色已经在你的队伍中了。",
@@ -355,7 +355,7 @@
       "description": "改变指定玩家的位置"
     },
     "tower": {
-      "unlock_done": "深境回廊的所有层已全部解锁。"
+      "unlock_done": "深境回廊(1-8层)已全部解锁。"
     },
     "weather": {
       "usage": "用法：weather <天气ID> [气候ID]",
@@ -379,7 +379,7 @@
     },
     "unlocktower": {
       "success": "解锁完成。",
-      "description": "解锁深境螺旋的所有层"
+      "description": "解锁深境螺旋(9-12层)."
     },
     "resetshop": {
       "description": "重置商店刷新时间"
