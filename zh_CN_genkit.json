@@ -50,7 +50,7 @@
             "run_mode_error":"无效的服务器运行模式：%s。",
             "run_mode_help":"服务器运行模式必须为 'HYBRID'(混合模式), 'DISPATCH_ONLY'(仅dispatch模式), 或 'GAME_ONLY'(仅游戏模式). 无法启动Grasscutter...",
             "create_resources":"正在创建 resources 目录...",
-            "resources_error":"请将服务端资源复制到 resources 目录。您可以在这里找到资源：https://github.com/Koko-boya/Grasscutter_Resources。",
+            "resources_error":"请将服务端资源复制到 resources 目录。\n您可以在这里找到资源：https://github.com/Koko-boya/Grasscutter_Resources。",
             "version":"Grasscutter 版本: %s-%s"
         }
     },
@@ -58,8 +58,8 @@
         "generic":{
             "not_specified":"未指定命令。",
             "unknown_command":"未知命令： %s",
-            "permission_error":"你没有权限运行此命令。",
-            "console_execute_error":"此命令只能在控制台执行。",
+            "permission_error":"你没有权限执行此命令。",
+            "console_execute_error":"请在服务器控制台执行此命令。",
             "player_execute_error":"请在游戏内执行此命令。",
             "command_exist_error":"未找到命令。",
             "no_description_specified":"此命令未提供说明。",
@@ -87,7 +87,11 @@
             "argument_error":"无效的命令参数。",
             "clear_target":"目标已被清除",
             "set_target":"接下来的命令在未指定目标uid的情况下，将默认以@%s为目标。",
-            "need_target":"此命令需要一个目标UID。添加一个<@UID>参数或使用/target @UID来指定一个默认的目标。"
+            "need_target":"此命令需要一个目标UID。添加一个<@UID>参数或使用/target @UID来指定一个默认的目标。",
+            "need_target_online": "此命令需要目标在线，但当前目标离线。\n使用<@UID>参数指定另一个目标或使用 /target @UID 来指定一个默认的目标。",
+            "need_target_offline": "此命令需要目标离线，但当前目标在线。\n使用<@UID>参数指定另一个目标或使用 /target @UID 来指定一个默认的目标。",
+            "set_target_online": "@%s 当前在线。\n某些命令可能需要离线目标。",
+            "set_target_offline": "@%s 当前离线。\n某些命令可能需要在线目标。"
         },
         "status":{
             "enabled":"已启用",
@@ -148,7 +152,7 @@
             "description":"给予所有物品"
         },
         "nostamina":{
-            "success":"NoStamina %s 对于 %s.",
+            "success":"已 %s %s 的体力消耗.",
             "description":"禁用体力消耗。"
         },
         "giveArtifact":{
@@ -264,7 +268,7 @@
             "sender":"<发件人>",
             "arguments":"<物品ID|物品名称|finish> [数量] [等级]",
             "error":"错误：无效的撰写阶段 %s。需要 StackTrace 请查看服务器控制台。",
-            "description":"向指定用户发送邮件。此命令的语法会基于邮件的成分而改变。"
+            "description":"向指定用户发送邮件。\n此命令的语法会基于邮件的成分和撰写阶段而改变。"
         },
         "sendMessage":{
             "usage":"用法：sendmessage <玩家> <消息>",
